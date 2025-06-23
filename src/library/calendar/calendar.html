@@ -1,0 +1,30 @@
+<mat-grid-list cols="15">
+  <mat-grid-tile >Hours</mat-grid-tile>
+  @for( day of data_processed_keys(); track $index){
+    <mat-grid-tile colspan="2">{{day}}</mat-grid-tile>
+  }
+    @for (hour of hours; track $index){
+        <mat-grid-tile>
+            {{hour}}
+        </mat-grid-tile>
+	    @for( day of data_keys(); track $index;){
+                <mat-grid-tile colspan="2">
+                    <mat-grid-list cols={{(data()[day]).length}}>
+                        @for (item of data()[day][hour]; track $index) {
+                            <mat-card appearance="outlined">
+                                <mat-card-header>
+                                            <mat-card-title>{{item.title}}</mat-card-title>
+                                    </mat-card-header>
+                                <mat-card-content>
+                                    <span>
+                                        {{item.description}} at {{item.start}} until {{item.end}}
+                                    </span>
+                                </mat-card-content>
+                            </mat-card>
+                            
+                        }
+                    </mat-grid-list>
+                </mat-grid-tile>
+			}
+	}
+</mat-grid-list>

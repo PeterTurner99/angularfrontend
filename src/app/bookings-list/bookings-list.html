@@ -1,0 +1,16 @@
+  <mat-card class="dashboard-card" appearance="outlined">
+     <mat-card-header class="justify-center">
+      <mat-card-title >Appointments</mat-card-title>
+    </mat-card-header>
+    <mat-divider class="divider-margin"></mat-divider>
+    <mat-card-content>
+         @if(booking_list.hasValue()){
+            
+            <app-calendar [data]="booking_list.value()"></app-calendar>
+         }@if (booking_list.error()) {
+         }
+         @else if (booking_list.isLoading()) {
+            <mat-spinner class="spinner"></mat-spinner>
+         }
+    </mat-card-content>
+  </mat-card>

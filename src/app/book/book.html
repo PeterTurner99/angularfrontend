@@ -1,0 +1,56 @@
+  <mat-card class="dashboard-card" appearance="outlined">
+     <mat-card-header class="justify-center">
+      <mat-card-title >Book an appointment</mat-card-title>
+    </mat-card-header>
+    <mat-divider class="divider-margin"></mat-divider>
+    <mat-card-content> 
+        <div [hidden]="!submitted" class="submitted_div">
+            <h4>Successfully submitted</h4>
+        </div>
+        <form (ngSubmit)="onSubmit()" [formGroup]="bookingFormGroup">
+            <mat-form-field appearance="outline">
+                <mat-label>Title</mat-label>
+                <input matInput formControlName="title"/>
+            </mat-form-field>
+            
+            
+            <mat-form-field appearance="outline">
+                <mat-label>Description</mat-label>
+                <textarea matInput formControlName="description"></textarea>
+            </mat-form-field>
+            
+            <div class="flex row gap-5">
+                <mat-form-field appearance="outline">
+                    <mat-label>Start Date</mat-label>
+                    <input formControlName="startDate" matInput [matDatepicker]="startDatePicker">
+                    <mat-datepicker-toggle matIconSuffix [for]="startDatePicker"/>
+                    <mat-datepicker #startDatePicker/>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Start Time</mat-label>
+                    <input formControlName="startDate" matInput [matTimepicker]="startPicker">
+                    <mat-timepicker-toggle matIconSuffix [for]="startPicker"/>
+                    <mat-timepicker #startPicker/>
+                </mat-form-field>
+            </div>
+            <div class="flex row gap-5" >
+                <mat-form-field appearance="outline">
+                    <mat-label>End Date</mat-label>
+                    <input formControlName="endDate" matInput [matDatepicker]="endPicker">
+                    <mat-datepicker #endPicker/>
+                     <mat-datepicker-toggle [for]="endPicker" matSuffix/>
+                    
+                </mat-form-field>
+                
+                <mat-form-field appearance="outline">
+                    <mat-label>End Time</mat-label>
+                    <input formControlName="endDate" matInput [matTimepicker]="endTimePicker">
+                    <mat-timepicker-toggle matIconSuffix [for]="endTimePicker"/>
+                    <mat-timepicker #endTimePicker/>
+                
+                </mat-form-field>
+            </div>
+            <button [disabled]="bookingFormGroup.invalid" type="submit" matButton="tonal">Submit</button>
+        </form>
+    </mat-card-content>
+  </mat-card>
