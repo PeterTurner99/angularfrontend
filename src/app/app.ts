@@ -13,11 +13,26 @@ export class App {
     {
       href: '',
       label: 'Dashboard',
+      sublinks: [],
     },
 
     {
       href: 'login',
       label: 'login',
+      class: '',
+      sublinks: [
+        {
+          label: 'View Profile',
+          href: 'view_profile',
+          class: '',
+        },
+        {
+          label: 'Logout',
+          href: 'logout',
+          class: '',
+        },
+      ],
+      topbar_class: 'ml-auto',
     },
   ];
 }

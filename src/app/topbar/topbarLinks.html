@@ -1,1 +1,19 @@
-<a class="{{class()}}" routerLink="{{href()}}"> {{label()}} </a>
+<div class='top-bar-link'>
+    <a class="{{class()}} mainLink" routerLink="{{href()}}">
+        {{label()}}
+    </a>
+    @if (sublinks().length > 0  && show_sublinks) {
+        <button class='icon-button-fix' matIconButton [matMenuTriggerFor]="sublinks_menu" (aria-label)="label()">
+            <mat-icon class='icon-fix' fontIcon="menu"></mat-icon>
+        </button>
+    }
+</div>
+<mat-menu #sublinks_menu="matMenu">
+    <div class="flex col w-fit-content">
+        @for (sublink of sublinks(); track $index) {
+        <a class="{{class()}} subLink" routerLink="{{sublink.href}}">
+            {{sublink.label}}
+        </a>
+        }
+    </div>
+</mat-menu>
