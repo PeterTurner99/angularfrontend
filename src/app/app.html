@@ -1,7 +1,9 @@
 <main>
-  <topbar>
+  <topbar class="w-full">
     @for (linkGroup of listOfLinks; track $index){
-    <TopbarLink label="{{linkGroup.label}}" href="{{linkGroup.href}}" />
+    <div class="{{linkGroup.topbar_class}}">
+        <TopbarLink [sublinks]="linkGroup.sublinks" label="{{linkGroup.label}}" href="{{linkGroup.href}}" />
+    </div>
     }
   </topbar>
   <router-outlet />

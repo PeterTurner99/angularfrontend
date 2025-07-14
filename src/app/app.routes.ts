@@ -6,6 +6,7 @@ import { authGuard } from './auth-guard';
 import { Book } from './book/book';
 import {Register} from './auth/register/register'
 import { BookingsList } from './bookings-list/bookings-list';
+import { Logout } from './auth/logout/logout';
 export const routes: Routes = [
   {
     path: 'test',
@@ -34,5 +35,10 @@ export const routes: Routes = [
   {
     path: 'register',
     component: Register,
+  },
+  {
+    path: 'logout',
+    component: Logout,
+    canActivate: [authGuard]
   }
 ];

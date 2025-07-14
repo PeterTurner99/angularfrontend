@@ -11,6 +11,7 @@ import {
   Validators,
   ReactiveFormsModule,
 } from '@angular/forms';
+import { AuthCheck } from '../auth-check';
 import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
@@ -34,6 +35,7 @@ export class Login {
   private http = inject(HttpClient);
   cookieService = inject(CookieService);
   private router = inject(Router);
+  private authCheck = inject(AuthCheck)
   hide = signal(true);
   clickEvent(event: MouseEvent) {
     this.hide.set(!this.hide());
@@ -72,6 +74,7 @@ export class Login {
             secure: true,
             sameSite: 'Strict',
           });
+          this.authCheck.sendUpdate(true);
           this.router.navigate(['/']);
         },
         error: (error) => {
