@@ -1,1 +1,28 @@
-<p>register works!</p>
+<mat-card class="login-card" appearance="outlined">
+  <mat-card-header>
+    <mat-card-title> Registration Form </mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="card-body login-body">
+    @if (showError) {
+    <error-card [errors]="errors"></error-card>
+    }
+    <form [formGroup]="register" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline">
+        <mat-label>Enter your username</mat-label>
+        <input matInput formControlName="username" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Enter your email</mat-label>
+        <input matInput formControlName="email" />
+      </mat-form-field>
+      <password-field formControlName="password1" />
+      <password-field
+        formControlName="password2"
+        label="Confirm Your Password"
+      />
+      <button [disabled]="register.invalid" type="submit" matButton="filled">
+        Submit
+      </button>
+    </form>
+  </mat-card-content>
+</mat-card>

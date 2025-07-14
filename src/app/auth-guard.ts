@@ -10,6 +10,8 @@ export const authGuard: CanActivateFn = (route, state) => {
   const http = inject(HttpClient);
   const authToken = cookieService.get('userToken');
   if (!authToken) {
+    router.navigate(['login']);
+    cookieService.delete('userToken')
     return returnVal;
   }
   if (
@@ -20,6 +22,8 @@ export const authGuard: CanActivateFn = (route, state) => {
       })
   ) {
     returnVal = true;
+  }else{
+    cookieService.delete('userToken')
   }
   return returnVal;
 };

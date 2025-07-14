@@ -1,16 +1,54 @@
-  <mat-card class="dashboard-card" appearance="outlined">
-     <mat-card-header class="justify-center">
-      <mat-card-title >Appointments</mat-card-title>
-    </mat-card-header>
-    <mat-divider class="divider-margin"></mat-divider>
-    <mat-card-content>
-         @if(booking_list.hasValue()){
-            
-            <app-calendar [data]="booking_list.value()"></app-calendar>
-         }@if (booking_list.error()) {
-         }
-         @else if (booking_list.isLoading()) {
-            <mat-spinner class="spinner"></mat-spinner>
-         }
-    </mat-card-content>
-  </mat-card>
+<mat-card class="dashboard-card" appearance="outlined">
+  <mat-card-header class="justify-center">
+    <mat-card-title>Appointments</mat-card-title>
+  </mat-card-header>
+  <mat-divider class="divider-margin"></mat-divider>
+  <mat-card-content>
+    <div class="flex j-space-between mb-5 mt-5 row gap-5">
+      <button matButton="tonal" (click)="dateChange(-7)">Previous Week</button>
+      <mat-form-field appearance="outline">
+        <mat-label>Start of week</mat-label>
+        <input
+          [(ngModel)]="date"
+          (dateChange)="onDateChange()"
+          matInput
+          [matDatepicker]="picker"
+        />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <button matButton="tonal" (click)="dateChange(7)">Next Week</button>
+    </div>
+    <form [formGroup]="filterGroup">
+      <div class="flex row gap-5">
+        <mat-form-field appearance="outline">
+          <mat-label>Filter by email</mat-label>
+          <input
+            (input)="updateList()"
+            formControlName="emailFilter"
+            matInput
+          />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Filter by title</mat-label>
+          <input
+            (input)="updateList()"
+            formControlName="titleFilter"
+            matInput
+          />
+        </mat-form-field>
+      </div>
+    </form>
+
+    @if(bookingList | async; as bookingListData){
+
+    <app-calendar [data]="bookingListData"></app-calendar>
+    } @else {
+    <mat-spinner class="spinner"></mat-spinner>
+    }
+  </mat-card-content>
+</mat-card>

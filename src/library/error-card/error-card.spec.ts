@@ -1,17 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Register } from './register';
+import { ErrorCard } from './error-card';
 
-describe('Register', () => {
-  let component: Register;
-  let fixture: ComponentFixture<Register>;
+describe('ErrorCard', () => {
+  let component: ErrorCard;
+  let fixture: ComponentFixture<ErrorCard>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Register],
-    }).compileComponents();
+      imports: [ErrorCard]
+    })
+    .compileComponents();
 
-    fixture = TestBed.createComponent(Register);
+    fixture = TestBed.createComponent(ErrorCard);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

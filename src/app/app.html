@@ -1,9 +1,8 @@
 <main>
   <topbar>
-        @for (linkGroup of listOfLinks; track $index){
-            <TopbarLink label={{linkGroup.label}} href={{linkGroup.href}}/>
-        }
+    @for (linkGroup of listOfLinks; track $index){
+    <TopbarLink label="{{linkGroup.label}}" href="{{linkGroup.href}}" />
+    }
   </topbar>
-<router-outlet />
-
+  <router-outlet />
 </main>

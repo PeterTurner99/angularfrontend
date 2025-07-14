@@ -4,8 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-test',
   imports: [],
   templateUrl: './test.html',
-  styleUrl: './test.less'
+  styleUrl: './test.less',
 })
-export class Test {
-
-}
+export class Test {}

@@ -3,7 +3,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-
+import { RouterLink } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import {
   FormControl,
@@ -14,6 +14,7 @@ import {
 import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+import { PasswordField } from '../../../library/password-field/password-field';
 @Component({
   selector: 'app-login',
   imports: [
@@ -23,7 +24,8 @@ import { Router } from '@angular/router';
     MatButtonModule,
     MatIconModule,
     MatInputModule,
-    
+    RouterLink,
+    PasswordField,
   ],
   templateUrl: './login.html',
   styleUrl: './login.less',
@@ -37,7 +39,8 @@ export class Login {
     this.hide.set(!this.hide());
     event.stopPropagation();
   }
-
+  showError = false;
+  errors = [''];
   login = new FormGroup({
     username: new FormControl('', [Validators.required]),
     password: new FormControl('', [
@@ -51,15 +54,30 @@ export class Login {
     var password = form_values.password!;
     var data = JSON.stringify({ username: username, password: password });
     this.http
-      .post<{ token: string }>('http://localhost:4200/api/auth/login/', {}, {
-        responseType: 'json',
-        headers: { Authorization: `Basic ${btoa(`${username}:${password}`)}` },
-      })
-      .subscribe((config) => {
-        console.log(config);
-        let token = config.token;
-        this.cookieService.set('userToken', token,{secure:true,sameSite:'Strict'});
-        this.router.navigate(['/']);
+      .post<{ token: string }>(
+        'http://localhost:4200/api/auth/login/',
+        {},
+        {
+          responseType: 'json',
+          headers: {
+            Authorization: `Basic ${btoa(`${username}:${password}`)}`,
+          },
+        }
+      )
+      .subscribe({
+        next: (config) => {
+          console.log(config);
+          let token = config.token;
+          this.cookieService.set('userToken', token, {
+            secure: true,
+            sameSite: 'Strict',
+          });
+          this.router.navigate(['/']);
+        },
+        error: (error) => {
+          this.showError = true;
+          this.errors = Object.values(error.error);
+        },
       });
   }
 }

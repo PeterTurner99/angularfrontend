@@ -1,32 +1,33 @@
-
 <mat-card class="login-card" appearance="outlined">
   <mat-card-header>
     <mat-card-title> Login Form </mat-card-title>
   </mat-card-header>
   <mat-card-content class="card-body login-body">
-    <form  [formGroup]="login" (ngSubmit)="onSubmit()">
-        
-        <mat-form-field appearance="outline">
-          <mat-label>Enter your username</mat-label>
-          <input matInput formControlName="username" />
-        </mat-form-field>
-        
-        
-        <mat-form-field  appearance="outline">
-          <mat-label>Enter your password</mat-label>
-          <input matInput   formControlName="password" [type]="hide() ? 'password' : 'text'" />
-          <button
-          type="button"
-            matIconButton
-            matSuffix
-            (click)="clickEvent($event)"
-            [attr.aria-label]="'Hide password'"
-            [attr.aria-pressed]="hide()"
-          >
-            <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
-          </button>
-        </mat-form-field>
-        <button [disabled]="login.invalid" type="submit" matButton="filled">Submit</button>
+    @if (showError) {
+        <mat-card class="error-card" appearance="outlined">
+            <mat-card-header> <h3 class="error-text">Errors</h3> </mat-card-header>
+            <mat-card-content>
+                <ul class="error-list">
+                @for (error of errors; track $index) { 
+                <li>{{error}}</li>
+                } 
+                </ul>
+            </mat-card-content>
+        </mat-card>
+
+    }
+    <form [formGroup]="login" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline">
+        <mat-label>Enter your username</mat-label>
+        <input matInput formControlName="username" />
+      </mat-form-field>
+
+      <password-field formControlName="password"  />
+      <button [disabled]="login.invalid" type="submit" matButton="filled">
+        Submit
+      </button>
     </form>
+    <a class="mt-15 block text-underline clickable " routerLink="/register">Not yet signed up?</a>
+
   </mat-card-content>
 </mat-card>
