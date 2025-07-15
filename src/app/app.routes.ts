@@ -7,6 +7,8 @@ import { Book } from './book/book';
 import {Register} from './auth/register/register'
 import { BookingsList } from './bookings-list/bookings-list';
 import { Logout } from './auth/logout/logout';
+import { ViewProfile } from './user/view-profile/view-profile';
+import { EditProfile } from './user/edit-profile/edit-profile';
 export const routes: Routes = [
   {
     path: 'test',
@@ -40,5 +42,15 @@ export const routes: Routes = [
     path: 'logout',
     component: Logout,
     canActivate: [authGuard]
-  }
+  },
+  {
+    path: 'view_profile',
+    component: ViewProfile,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'edit_profile',
+    component: EditProfile,
+    canActivate: [authGuard]
+  },
 ];
