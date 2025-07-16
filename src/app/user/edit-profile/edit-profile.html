@@ -5,25 +5,50 @@
     </mat-card-title>
   </mat-card-header>
   <mat-card-content class="card-body profile-body">
-
     <mat-divider class="divider-margin"></mat-divider>
 
     <div class="content">
       <error-card [hidden]="!showError" [errors]="errors" />
-      <form class="centered" (ngSubmit)="onSubmit()" [formGroup]="edit_profile_form">
+      <submitted-card [submitted]=submitted/>
+      <form
+        class="centered"
+        (ngSubmit)="onSubmit()"
+        [formGroup]="edit_profile_form"
+      >
         <div>
-             <mat-form-field appearance="outline">
-                <mat-label>Username</mat-label>
-                <input matInput formControlName="username"/>
-            </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Username</mat-label>
+            <input matInput formControlName="username" />
+          </mat-form-field>
         </div>
         <div>
-            <mat-form-field appearance="outline">
-                <mat-label>Maximum number of bookings</mat-label>
-                <input type="number" matInput formControlName="max_bookings_at_once"/>
-            </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" />
+          </mat-form-field>
         </div>
-        <div></div>
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>Maximum number of bookings</mat-label>
+            <input
+              type="number"
+              matInput
+              formControlName="max_bookings_at_once"
+            />
+          </mat-form-field>
+        </div>
+
+        <div class="flex j-space-between">
+            <button
+              [disabled]="edit_profile_form.invalid"
+              type="submit"
+              matButton="tonal"
+            >
+              Save
+            </button>
+            <button type="button" (click)="redirect()"
+              matButton="tonal">Back</button>
+        </div>
       </form>
     </div>
   </mat-card-content>
