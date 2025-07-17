@@ -1,1 +1,34 @@
-<p>view-profile works!</p>
+<mat-card class="profile-card main-card" appearance="outlined">
+  <mat-card-header class="header-div">
+    <mat-card-title>
+      <h3>Your information</h3>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="card-body profile-body">
+    <a class="link clickable" routerLink="/edit_profile/">Edit information</a>
+    
+    <mat-divider class="divider-margin"></mat-divider>
+
+    @if(profile_data_getter | async; as profile_data){
+    <div class="content">
+      <div>
+        <p>
+          Email: {{profile_data.email ? profile_data.email : "Not set yet"}}
+        </p>
+      </div>
+      <div>
+        <p>
+          Username: {{profile_data.username ? profile_data.username : "Not set
+          yet"}}
+        </p>
+      </div>
+      <div>
+        <p>Max number of bookings: {{profile_data.max_bookings_at_once}}</p>
+      </div>
+    </div>
+    } @else {
+    <mat-spinner class="spinner"></mat-spinner>
+
+    }
+  </mat-card-content>
+</mat-card>

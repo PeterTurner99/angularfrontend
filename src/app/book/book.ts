@@ -16,6 +16,7 @@ import { HttpClient } from '@angular/common/http';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ErrorCard } from '../../library/error-card/error-card';
 import { Router } from '@angular/router';
+import { SubmittedCard } from "../../library/submitted-card/submitted-card";
 @Component({
   selector: 'app-book',
   imports: [
@@ -27,8 +28,9 @@ import { Router } from '@angular/router';
     MatTimepickerModule,
     MatInputModule,
     MatFormFieldModule,
-    ErrorCard
-  ],
+    ErrorCard,
+    SubmittedCard
+],
   providers: [provideNativeDateAdapter()],
   templateUrl: './book.html',
   styleUrl: './book.less',
