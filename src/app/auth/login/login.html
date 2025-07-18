@@ -4,16 +4,16 @@
   </mat-card-header>
   <mat-card-content class="card-body login-body">
     @if (showError) {
-        <mat-card class="error-card" appearance="outlined">
-            <mat-card-header> <h3 class="error-text">Errors</h3> </mat-card-header>
-            <mat-card-content>
-                <ul class="error-list">
-                @for (error of errors; track $index) { 
-                <li>{{error}}</li>
-                } 
-                </ul>
-            </mat-card-content>
-        </mat-card>
+    <mat-card class="error-card" appearance="outlined">
+      <mat-card-header> <h3 class="error-text">Errors</h3> </mat-card-header>
+      <mat-card-content>
+        <ul class="error-list">
+          @for (error of errors; track $index) {
+          <li>{{error}}</li>
+          }
+        </ul>
+      </mat-card-content>
+    </mat-card>
 
     }
     <form [formGroup]="login" (ngSubmit)="onSubmit()">
@@ -22,12 +22,36 @@
         <input matInput formControlName="username" />
       </mat-form-field>
 
-      <password-field formControlName="password"  />
+      <password-field formControlName="password" />
       <button [disabled]="login.invalid" type="submit" matButton="filled">
         Submit
       </button>
     </form>
-    <a class="mt-15 block text-underline clickable " routerLink="/register">Not yet signed up?</a>
+    <div>
+      <p>Or login with</p>
+      <div
+        id="g_id_onload"
+        data-client_id="855584200021-gjldc8g7u4lbbg5da597r6cmin3pm3u2.apps.googleusercontent.com"
+        data-context="signin"
+        data-ux_mode="popup"
+        data-callback="onGoogleSignIn"
+        data-auto_select="true"
+        data-itp_support="true"
+      ></div>
 
+      <div
+        class="g_id_signin"
+        data-type="standard"
+        data-shape="pill"
+        data-theme="filled_blue"
+        data-text="signin_with"
+        data-size="large"
+        data-logo_alignment="left"
+      ></div>
+    </div>
+    <a class="mt-15 block text-underline clickable" routerLink="/register"
+      >Not yet signed up?</a
+    >
   </mat-card-content>
 </mat-card>
+

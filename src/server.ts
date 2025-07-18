@@ -34,7 +34,6 @@ app.use(
     redirect: false,
   })
 );
-
 /**
  * Handle all other requests by rendering the Angular application.
  */
