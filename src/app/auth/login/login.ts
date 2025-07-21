@@ -45,11 +45,13 @@ export class Login {
         if (!data.result){
             return false
         }
+        this.showOtherLogins = true
         const body = <HTMLDivElement>document.body;
         const script = document.createElement('script');
         script.src = 'https://accounts.google.com/gsi/client';
         script.async = true;
         script.defer = true;
+        
         body.appendChild(script);
         window.onGoogleSignIn = (response: {}) => {
           console.log(response, this.http);
@@ -91,6 +93,7 @@ export class Login {
     this.hide.set(!this.hide());
     event.stopPropagation();
   }
+  showOtherLogins = false
   showError = false;
   errors = [''];
   login = new FormGroup({
