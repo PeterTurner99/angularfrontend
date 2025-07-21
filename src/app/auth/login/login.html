@@ -27,6 +27,8 @@
         Submit
       </button>
     </form>
+    
+    @if (showOtherLogins) {
     <div>
       <p>Or login with</p>
       <div
@@ -49,6 +51,7 @@
         data-logo_alignment="left"
       ></div>
     </div>
+    }  
     <a class="mt-15 block text-underline clickable" routerLink="/register"
       >Not yet signed up?</a
     >
