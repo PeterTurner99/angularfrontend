@@ -39,6 +39,7 @@ export class Calendar {
   readonly dialog = inject(MatDialog);
   data_keys = computed(() => Object.keys(this.data()));
   data_processed_keys = computed(() => {
+    console.log(this.data())
     let keys = Object.keys(this.data());
     let processed_keys = keys.map((value) => {
       let date: Date = new Date(Date.parse(value));

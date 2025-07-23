@@ -22,7 +22,7 @@ export function authInterceptor(
   const authToken = cookieService.get('userToken');
   console.log(authToken, 'athuu test');
   let newReq;
-  if (authToken) {
+if (authToken && !(req.headers.has('Authorization'))) {
     newReq = req.clone({
       headers: req.headers.append('Authorization', `Token ${authToken}`),
     });

@@ -160,6 +160,7 @@ export class Login {
         error: (error) => {
           this.showError = true;
           this.errors = Object.values(error.error);
+          this.cookieService.delete('userToken');
         },
       });
   }
