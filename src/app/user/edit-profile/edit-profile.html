@@ -18,13 +18,13 @@
         <div>
           <mat-form-field appearance="outline">
             <mat-label>Username</mat-label>
-            <input matInput formControlName="username" />
+            <input class='username' matInput formControlName="username" />
           </mat-form-field>
         </div>
         <div>
           <mat-form-field appearance="outline">
             <mat-label>Email</mat-label>
-            <input matInput formControlName="email" />
+            <input class="email" matInput formControlName="email" />
           </mat-form-field>
         </div>
         <div>
@@ -33,6 +33,7 @@
             <input
               type="number"
               matInput
+              class="max_bookings"
               formControlName="max_bookings_at_once"
             />
           </mat-form-field>
@@ -42,6 +43,7 @@
             <button
               [disabled]="edit_profile_form.invalid"
               type="submit"
+              class="submit-button"
               matButton="tonal"
             >
               Save
