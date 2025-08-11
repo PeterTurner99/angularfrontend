@@ -74,7 +74,6 @@ export class EditProfile {
       )
       .subscribe({
         next: (data) => {
-          console.log(data);
           this.submitted = true;
           this.edit_profile_form.setValue({
             username: data['username'],

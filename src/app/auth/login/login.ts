@@ -54,7 +54,6 @@ export class Login {
         
         body.appendChild(script);
         window.onGoogleSignIn = (response: {}) => {
-          console.log(response, this.http);
           this.http
             .post<{ token: string }>(
               'http://localhost:4200/api/auth/social/google/',
@@ -65,7 +64,6 @@ export class Login {
             )
             .subscribe({
               next: (config) => {
-                console.log(config);
                 let token = config.token;
                 this.cookieService.set('userToken', token, {
                   secure: true,
@@ -104,7 +102,6 @@ export class Login {
     ]),
   });
   onGoogleSignIn(response: {}) {
-    console.log(response, this.http);
     this.http
       .post<{ token: string }>(
         'http://localhost:4200/api/auth/social/google/',
@@ -115,7 +112,6 @@ export class Login {
       )
       .subscribe({
         next: (config) => {
-          console.log(config);
           let token = config.token;
           this.cookieService.set('userToken', token, {
             secure: true,
@@ -148,7 +144,6 @@ export class Login {
       )
       .subscribe({
         next: (config) => {
-          console.log(config);
           let token = config.token;
           this.cookieService.set('userToken', token, {
             secure: true,

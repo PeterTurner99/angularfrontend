@@ -87,14 +87,12 @@ export class Book {
     var processed_data = JSON.stringify({
       data,
     });
-    console.log(data);
     this.http
       .post(`http://localhost:4200/api/walk/book/`, processed_data, {
         headers: { 'Content-Type': 'application/json' },
       })
       .subscribe({
         next: (data) => {
-          console.log(data);
           this.submitted = true;
           setTimeout(() => {
             this.router.navigate(['bookings/']);
@@ -127,7 +125,6 @@ export class Book {
       new Date(Date.parse(end_date!)).toDateString() +
       ' ' +
       new Date(Date.parse(end_time!)).toTimeString();
-    console.log(test_date);
     data['endDate'] = new Date(
       Date.parse(
         new Date(Date.parse(end_date!)).toDateString() +
@@ -146,13 +143,11 @@ export class Book {
     var processed_data = JSON.stringify({
       data,
     });
-    console.log(data);
     this.http
       .post(`http://localhost:4200/api/walk/book/`, processed_data, {
         headers: { 'Content-Type': 'application/json' },
       })
       .subscribe({ next: (data) => {
-        console.log(data);
         this.submitted = true;
         setTimeout(() => {
           this.submitted = false;

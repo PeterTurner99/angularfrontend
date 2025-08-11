@@ -59,7 +59,6 @@ describe('authGuard', () => {
     const guardResponse = TestBed.runInInjectionContext(() => {
       return authGuard(activatedRoute.snapshot, {} as RouterStateSnapshot);
     });
-    console.log(guardResponse, mockRouter.createUrlTree);
     expect(mockRouter.navigate).toHaveBeenCalled();
   });
   it('should return true if an auth token is passed', (done: DoneFn) => {
@@ -77,7 +76,6 @@ describe('authGuard', () => {
       TestBed.runInInjectionContext(() => {
         return authGuard(activatedRoute.snapshot, {} as RouterStateSnapshot);
       });
-    console.log(guardResponse, mockRouter.createUrlTree);
     expect(mockRouter.navigate).not.toHaveBeenCalled();
     guardResponse.subscribe((value) => {
       expect(value).toBeTrue();
