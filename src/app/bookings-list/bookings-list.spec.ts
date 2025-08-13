@@ -273,8 +273,7 @@ describe('BookingsList', () => {
       component = fixture.componentInstance;
       fixture.detectChanges();
       await setTimeoutPromise(1000);
-    loader = TestbedHarnessEnvironment.loader(fixture);
-
+      loader = TestbedHarnessEnvironment.loader(fixture);
     });
     it('should have one element when given one data element', async () => {
       fixture.detectChanges();
@@ -623,6 +622,5 @@ describe('BookingsList', () => {
       var httpBody = JSON.parse(httpSpy.calls.argsFor(1)[1]);
       expect(httpBody.titleFilter).toBe('test_title');
     });
-
   });
 });

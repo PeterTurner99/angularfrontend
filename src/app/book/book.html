@@ -4,31 +4,32 @@
   </mat-card-header>
   <mat-divider class="divider-margin"></mat-divider>
   <mat-card-content>
-    <submitted-card [submitted]="submitted"/>
+    <submitted-card [submitted]="submitted" />
     <error-card [hidden]="!showError" [errors]="errors" />
     <form (ngSubmit)="onSubmit()" [formGroup]="bookingFormGroup">
       <mat-form-field appearance="outline">
         <mat-label>Title</mat-label>
-        <input matInput formControlName="title" />
+        <input class='title' matInput formControlName="title" />
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Description</mat-label>
-        <textarea matInput formControlName="description"></textarea>
+        <textarea matInput class='description' formControlName="description"></textarea>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Email of the person you are booking</mat-label>
-        <input matInput formControlName="booked_email" />
+        <input matInput class='booked_email' formControlName="booked_email" />
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Name of the person you are booking</mat-label>
-        <input matInput formControlName="booked_name" />
+        <input matInput class='booked_name' formControlName="booked_name" />
       </mat-form-field>
 
       <div class="flex row gap-5">
         <mat-form-field appearance="outline">
           <mat-label>Start Date</mat-label>
           <input
+            class='startDate'
             formControlName="startDate"
             matInput
             [matDatepicker]="startDatePicker"
@@ -39,6 +40,7 @@
         <mat-form-field appearance="outline">
           <mat-label>Start Time</mat-label>
           <input
+          class='startTime'
             formControlName="startTime"
             matInput
             [matTimepicker]="startPicker"
@@ -51,6 +53,8 @@
         <mat-form-field appearance="outline">
           <mat-label>End Date</mat-label>
           <input
+                    class='endDate'
+
             formControlName="endDate"
             matInput
             [matDatepicker]="endPicker"
@@ -63,6 +67,8 @@
         <mat-form-field appearance="outline">
           <mat-label>End Time</mat-label>
           <input
+            class='endTime'
+
             formControlName="endTime"
             matInput
             [matTimepicker]="endTimePicker"
@@ -77,6 +83,7 @@
           [disabled]="bookingFormGroup.invalid"
           type="submit"
           matButton="tonal"
+          class="submit_1"
         >
           Submit
         </button>
@@ -84,6 +91,7 @@
           [disabled]="bookingFormGroup.invalid"
           type="button"
           (click)="onAgainSubmit()"
+          class="submit_2"
           matButton="tonal"
         >
           Submit and add another

@@ -121,10 +121,6 @@ export class Book {
     var start_time = data['startTime'];
     delete data.endTime;
     delete data.startTime;
-    var test_date =
-      new Date(Date.parse(end_date!)).toDateString() +
-      ' ' +
-      new Date(Date.parse(end_time!)).toTimeString();
     data['endDate'] = new Date(
       Date.parse(
         new Date(Date.parse(end_date!)).toDateString() +
@@ -151,7 +147,7 @@ export class Book {
         this.submitted = true;
         setTimeout(() => {
           this.submitted = false;
-          //   this.bookingFormGroup.reset();
+            this.bookingFormGroup.reset();
         }, 2000);
       },
      error: (error) => {
