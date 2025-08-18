@@ -26,6 +26,7 @@ describe('Auth', () => {
     cookieService = TestBed.inject(CookieService);
     httpTesting = TestBed.inject(HttpTestingController);
     httpClient = TestBed.inject(HttpClient)
+    cookieService.delete('userToken')
   });
 
   it('should be created', () => {

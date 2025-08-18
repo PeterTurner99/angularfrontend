@@ -9,18 +9,18 @@
     <form [formGroup]="register" (ngSubmit)="onSubmit()">
       <mat-form-field appearance="outline">
         <mat-label>Enter your username</mat-label>
-        <input matInput formControlName="username" />
+        <input class='username' matInput formControlName="username" />
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Enter your email</mat-label>
-        <input matInput formControlName="email" />
+        <input class='email' matInput formControlName="email" />
       </mat-form-field>
-      <password-field formControlName="password1" />
-      <password-field
+      <password-field inputClass='password1' formControlName="password1" />
+      <password-field inputClass='password2'
         formControlName="password2"
         label="Confirm Your Password"
       />
-      <button [disabled]="register.invalid" type="submit" matButton="filled">
+      <button class='submit' [disabled]="register.invalid" type="submit" matButton="filled">
         Submit
       </button>
     </form>

@@ -66,8 +66,8 @@ export class Register {
       )
       .subscribe(
         {
-          next: (config) => {
-            let token = config.token;
+          next: (response) => {
+            let token = response.token;
             this.cookieService.set('userToken', token, {
               secure: true,
               sameSite: 'Strict',

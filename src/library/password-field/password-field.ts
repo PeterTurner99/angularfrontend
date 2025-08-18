@@ -33,7 +33,8 @@ import {
 export class PasswordField implements ControlValueAccessor {
   hide = signal(true);
   name = input();
-  label = input()
+  label = input();
+  inputClass = input();
   clickEvent(event: MouseEvent) {
     this.hide.set(!this.hide());
     event.stopPropagation();
