@@ -6,24 +6,21 @@
   </mat-card-header>
   <mat-card-content class="card-body profile-body">
     <a class="link clickable" routerLink="/edit_profile/">Edit information</a>
-    
+
     <mat-divider class="divider-margin"></mat-divider>
 
     @if(profile_data_getter | async; as profile_data){
     <div class="content">
       <div>
         <p>
-          Email: {{profile_data.email ? profile_data.email : "Not set yet"}}
+          Email: <span class="email">{{profile_data.email ? profile_data.email : "Not set yet"}}</span>
         </p>
       </div>
       <div>
-        <p>
-          Username: {{profile_data.username ? profile_data.username : "Not set
-          yet"}}
-        </p>
+        <p>Username: <span class="username">{{profile_data.username ? profile_data.username : "Not set yet"}}</span></p>
       </div>
       <div>
-        <p>Max number of bookings: {{profile_data.max_bookings_at_once}}</p>
+        <p>Max number of bookings: <span  class="bookings">{{profile_data.max_bookings_at_once}}</span></p>
       </div>
     </div>
     } @else {

@@ -1,13 +1,13 @@
-<div mat-dialog-title class="title-section">
-  <h2>{{data.title}}</h2>
+<div mat-dialog-title class="title-section Popup-title">
+  <h2 class="popup-title-text">{{data.title}}</h2>
   <button matButton mat-dialog-close>x</button>
 </div>
 
-<mat-dialog-content>
-  <p>{{data.description}}</p>
+<mat-dialog-content class='popup-content'>
+  <p class="popup-description">{{data.description}}</p>
   <p>
-    Booking the user: {{data.booked_email}} @if(data.booked_name){ (
-    {{data.booked_name}} ) }
+    Booking the user: <span class="popup-email">{{data.booked_email}}</span> @if(data.booked_name){ (
+    <span class="popup-name">{{data.booked_name}}</span> ) }
   </p>
   <p>
     From {{start_time}} - {{start_date_string}} until {{end_time}} -

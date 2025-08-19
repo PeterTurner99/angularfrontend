@@ -52,7 +52,6 @@ export class Register {
   onSubmit() {
     var form_values = this.register.getRawValue();
     var data = JSON.stringify(form_values);
-    console.log(data);
     this.http
       .post<{ token: string }>(
         'http://localhost:4200/api/auth/register/',
@@ -67,8 +66,8 @@ export class Register {
       )
       .subscribe(
         {
-          next: (config) => {
-            let token = config.token;
+          next: (response) => {
+            let token = response.token;
             this.cookieService.set('userToken', token, {
               secure: true,
               sameSite: 'Strict',

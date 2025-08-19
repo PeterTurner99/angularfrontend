@@ -4,7 +4,7 @@
     <ul class="error-list">
       @for (errorList of errors(); track $index) { @for (error of errorList; track
       $index) {
-      <li>{{error}}</li>
+      <li class='error-list-item'>{{error}}</li>
       } }
     </ul>
   </mat-card-content>

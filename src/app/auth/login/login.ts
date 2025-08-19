@@ -54,7 +54,6 @@ export class Login {
         
         body.appendChild(script);
         window.onGoogleSignIn = (response: {}) => {
-          console.log(response, this.http);
           this.http
             .post<{ token: string }>(
               'http://localhost:4200/api/auth/social/google/',
@@ -65,7 +64,6 @@ export class Login {
             )
             .subscribe({
               next: (config) => {
-                console.log(config);
                 let token = config.token;
                 this.cookieService.set('userToken', token, {
                   secure: true,
@@ -104,7 +102,6 @@ export class Login {
     ]),
   });
   onGoogleSignIn(response: {}) {
-    console.log(response, this.http);
     this.http
       .post<{ token: string }>(
         'http://localhost:4200/api/auth/social/google/',
@@ -115,7 +112,6 @@ export class Login {
       )
       .subscribe({
         next: (config) => {
-          console.log(config);
           let token = config.token;
           this.cookieService.set('userToken', token, {
             secure: true,
@@ -134,7 +130,6 @@ export class Login {
     var form_values = this.login.value;
     var username = form_values.username!;
     var password = form_values.password!;
-    var data = JSON.stringify({ username: username, password: password });
     this.http
       .post<{ token: string }>(
         'http://localhost:4200/api/auth/login/',
@@ -148,7 +143,6 @@ export class Login {
       )
       .subscribe({
         next: (config) => {
-          console.log(config);
           let token = config.token;
           this.cookieService.set('userToken', token, {
             secure: true,
@@ -160,6 +154,7 @@ export class Login {
         error: (error) => {
           this.showError = true;
           this.errors = Object.values(error.error);
+          this.cookieService.delete('userToken');
         },
       });
   }

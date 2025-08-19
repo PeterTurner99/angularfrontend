@@ -5,7 +5,9 @@
   <mat-divider class="divider-margin"></mat-divider>
   <mat-card-content>
     <div class="flex j-space-between mb-5 mt-5 row gap-5">
-      <button matButton="tonal" (click)="dateChange(-7)">Previous Week</button>
+      <button matButton="tonal" class="decreaseByWeek" (click)="dateChange(-7)">
+        Previous Week
+      </button>
       <mat-form-field appearance="outline">
         <mat-label>Start of week</mat-label>
         <input
@@ -21,13 +23,16 @@
         ></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
-      <button matButton="tonal" (click)="dateChange(7)">Next Week</button>
+      <button class="increaseByWeek" matButton="tonal" (click)="dateChange(7)">
+        Next Week
+      </button>
     </div>
     <form [formGroup]="filterGroup">
       <div class="flex row gap-5">
         <mat-form-field appearance="outline">
           <mat-label>Filter by email</mat-label>
           <input
+            class="emailFilter"
             (input)="updateList()"
             formControlName="emailFilter"
             matInput
@@ -36,6 +41,7 @@
         <mat-form-field appearance="outline">
           <mat-label>Filter by title</mat-label>
           <input
+            class="titleFilter"
             (input)="updateList()"
             formControlName="titleFilter"
             matInput

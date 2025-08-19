@@ -15,20 +15,15 @@ export function authInterceptor(
   req: HttpRequest<unknown>,
   next: HttpHandlerFn
 ): Observable<HttpEvent<unknown>> {
-    console.log(req.headers)
-
   const cookieService = inject(CookieService);
-  const router = inject(Router);
   const authToken = cookieService.get('userToken');
-  console.log(authToken, 'athuu test');
   let newReq;
-  if (authToken) {
+  if (authToken && !req.headers.has('Authorization')) {
     newReq = req.clone({
       headers: req.headers.append('Authorization', `Token ${authToken}`),
     });
   } else {
     newReq = req.clone();
   }
-  console.log(newReq);
   return next(newReq);
 }
