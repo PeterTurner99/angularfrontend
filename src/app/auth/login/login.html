@@ -19,11 +19,11 @@
     <form [formGroup]="login" (ngSubmit)="onSubmit()">
       <mat-form-field appearance="outline">
         <mat-label>Enter your username</mat-label>
-        <input matInput formControlName="username" />
+        <input class='username' matInput formControlName="username" />
       </mat-form-field>
 
-      <password-field formControlName="password" />
-      <button [disabled]="login.invalid" type="submit" matButton="filled">
+      <password-field inputClass="password" formControlName="password" />
+      <button class='submitButton'  [disabled]="login.invalid" type="submit" matButton="filled">
         Submit
       </button>
     </form>

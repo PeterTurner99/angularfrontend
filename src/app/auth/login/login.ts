@@ -130,7 +130,6 @@ export class Login {
     var form_values = this.login.value;
     var username = form_values.username!;
     var password = form_values.password!;
-    var data = JSON.stringify({ username: username, password: password });
     this.http
       .post<{ token: string }>(
         'http://localhost:4200/api/auth/login/',
